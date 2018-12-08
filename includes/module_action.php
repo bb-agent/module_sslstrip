@@ -23,7 +23,7 @@ include "../_info_.php";
 include "../../../functions.php";
 
 /*
-$mod_path = "/usr/share/FruityWifi/www/modules/sslstrip/";
+$mod_path = "/usr/share/BlackBulb/www/modules/sslstrip/";
 if (file_exists("$mod_path/_info_.php")) {
 	include "$mod_path/_info_.php";
 }
@@ -47,11 +47,11 @@ if($service == "sslstrip") {
         // COPY LOG
         $exec = "$bin_cp $mod_logs $mod_path/includes/logs/sslstrip-".gmdate("Ymd-H-i-s").".log";
         //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	exec_fruitywifi($exec);
+	exec_blackbulb($exec);
         
         $exec = "$bin_iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000";
         //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	exec_fruitywifi($exec);
+	exec_blackbulb($exec);
         //$exec = "/usr/bin/sslstrip -a -s -l 10000 -w ../logs/sslstrip.log > /dev/null 2 &";
         
         if ($mod_sslstrip_inject == "1" and $mod_sslstrip_tamperer == "0") {
@@ -63,22 +63,22 @@ if($service == "sslstrip") {
         } else {
             $exec = "$bin_sslstrip -a -s -l 10000 -w $mod_logs > /dev/null 2 &";
         }
-        //$exec = "/usr/bin/sslstrip-tamper -a -s -l 10000 -w ../logs/sslstrip.log -t /usr/share/FruityWifi/www/modules/sslstrip/includes/app_cache_poison/config.ini > /dev/null 2 &";
+        //$exec = "/usr/bin/sslstrip-tamper -a -s -l 10000 -w ../logs/sslstrip.log -t /usr/share/BlackBulb/www/modules/sslstrip/includes/app_cache_poison/config.ini > /dev/null 2 &";
         
         //$exec = "/usr/bin/sslstrip -a -s -l 10000 -w ../logs/sslstrip/sslstrip-".gmdate("Ymd-H-i-s").".log > /dev/null 2 &";
         //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	exec_fruitywifi($exec);
+	exec_blackbulb($exec);
 	
     } else if($action == "stop") {
     	$exec = "$bin_iptables -t nat -D PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000";
         //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	exec_fruitywifi($exec);
+	exec_blackbulb($exec);
 	
         $exec = "$bin_killall sslstrip";
-        //$exec = "$bin_killall FruityWifi-sslstrip";
+        //$exec = "$bin_killall BlackBulb-sslstrip";
         //$exec = "/usr/bin/killall sslstrip-tamper";
         //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-	exec_fruitywifi($exec);
+	exec_blackbulb($exec);
     }
 }
 
@@ -87,11 +87,11 @@ if ($install == "install_sslstrip") {
 
     $exec = "chmod 755 install.sh";
     //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 
     $exec = "$bin_sudo ./install.sh > $log_path/install.txt &";
     //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
     
     header('Location: ../../install.php?module=sslstrip');
     exit;

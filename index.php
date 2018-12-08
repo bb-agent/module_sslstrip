@@ -20,7 +20,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>FruityWifi</title>
+<title>BlackBulb</title>
 <script src="../js/jquery.js"></script>
 <script src="../js/jquery-ui.js"></script>
 <link rel="stylesheet" href="../css/jquery-ui.css" />
@@ -65,7 +65,7 @@ $tempname = $_GET["tempname"];
 if ($logfile != "" and $action == "delete") {
     $exec = "$bin_rm ".$mod_logs_history.$logfile.".log";
     //exec("$bin_danger \"$exec\"", $dump); //DEPRECATED
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 }
 
 ?>
@@ -158,14 +158,14 @@ Loading, please wait...
             if ($mod_sslstrip_filter == "LogEx.py") {
                 $exec = "$bin_python $mod_path/includes/filters/LogEx.py $filename";
                 //exec("$bin_danger \"$exec\"", $output);
-		$output = exec_fruitywifi($exec); //DEPRECATED
+		$output = exec_blackbulb($exec); //DEPRECATED
                 
                 //$data = implode("\n",$output);
                 $data = $output;
             } else if ($mod_sslstrip_filter == "ParseLog.py") {
                 $exec = "$bin_python $mod_path/includes/filters/ParseLog.py $filename $mod_path/includes/filters";
                 //exec("$bin_danger \"$exec\"", $output); //DEPRECATED
-		$output = exec_fruitywifi($exec);
+		$output = exec_blackbulb($exec);
                         
                 //$data = implode("\n",$output);
                 $data = $output;
