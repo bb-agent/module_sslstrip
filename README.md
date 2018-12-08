@@ -1,7 +1,7 @@
 module_sslstrip
 ===============
 
-FruityWiFi sslstrip module.
+BlackBlulb sslstrip module.
 Copyright (C) 2013-2016  xtr4nge [_AT_] gmail.com
 
 
